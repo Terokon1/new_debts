@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">New Debts</string>
+    <string name="login_title">Вход</string>
+    <string name="email_hint">Email</string>
+    <string name="email_helper_text">Введите email</string>
+    <string name="password_hint">Пароль</string>
+    <string name="button_login_text">Войти</string>
+    <string name="no_acc_text">Нет аккаунта?</string>
+    <string name="registration_text">ЗАРЕГИСТРИРОВАТЬСЯ</string>
 </resources>
