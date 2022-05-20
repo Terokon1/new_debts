@@ -15,7 +15,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        navigatorHolder.setNavigator(navigator)
         if (savedInstanceState == null) {
             cicerone.router.replaceScreen(Screens.Login())
         }
