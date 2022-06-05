@@ -1,26 +1,24 @@
-package com.chaev.newdebts.ui.registration
+package com.chaev.newdebts.ui.registration.step1
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.chaev.newdebts.R
-import com.chaev.newdebts.databinding.FragmentRegistrationBinding
+import com.chaev.newdebts.databinding.FragmentRegistrationStep1Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegistrationFragment : Fragment() {
+class RegistrationStep1Fragment : Fragment() {
 
-    private lateinit var binding: FragmentRegistrationBinding
-    private val viewModel: RegistrationViewModel by viewModel()
+    private lateinit var binding: FragmentRegistrationStep1Binding
+    private val viewModel: RegistrationStep1ViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentRegistrationBinding.inflate(inflater)
+        binding = FragmentRegistrationStep1Binding.inflate(inflater)
         return binding.root
     }
 

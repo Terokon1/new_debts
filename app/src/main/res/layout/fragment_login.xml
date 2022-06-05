@@ -58,8 +58,8 @@
         android:textColorHint="#989898"
         android:theme="@style/Theme.TextInputLayout"
         app:endIconDrawable="@drawable/ic_password"
-        app:endIconTint="#99FFFFFF"
         app:endIconMode="password_toggle"
+        app:endIconTint="#99FFFFFF"
         app:helperText="Введите пароль"
         app:helperTextTextColor="#989898"
         app:hintTextColor="#989898"
@@ -74,15 +74,16 @@
             android:textColor="#989898" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="20dp"
-        android:backgroundTint="#1C9C6E"
-        android:letterSpacing="0."
+        android:background="@drawable/bg_custom_button"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:letterSpacing="0"
         android:padding="16dp"
         android:text="@string/button_login_text"
         android:textAllCaps="false"
@@ -109,6 +110,7 @@
         android:id="@+id/registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="@string/registration_text"
         android:textColor="#7D13BA"
         android:textStyle="bold"

@@ -36,11 +36,14 @@ class LoginFragment : Fragment() {
             if (email.isEmpty()) {
                 binding.emailField.isErrorEnabled = true
                 binding.emailField.error = "Поле ввода пустое"
-
+            } else {
+                binding.emailField.isErrorEnabled = false
             }
             if (password.isEmpty()) {
                 binding.passwordField.isErrorEnabled = true
                 binding.passwordField.error = "Поле ввода пустое"
+            } else {
+                binding.passwordField.isErrorEnabled = false
             }
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.onLoginClicked(email, password)
