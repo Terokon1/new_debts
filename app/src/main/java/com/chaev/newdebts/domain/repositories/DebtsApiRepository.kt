@@ -2,6 +2,7 @@ package com.chaev.newdebts.domain.repositories
 
 import com.chaev.newdebts.data.api.ApiService
 import com.chaev.newdebts.data.models.login.LoginRequest
+import com.chaev.newdebts.data.models.registration.RegistrationRequest
 import com.chaev.newdebts.domain.mappers.TokensMapper
 import com.chaev.newdebts.domain.models.Tokens
 import com.chaev.newdebts.utils.Either
@@ -17,5 +18,9 @@ class DebtsApiRepository(private val api: ApiService) {
 
     suspend fun login(email: String, password: String) = Either.of {
         TokensMapper.fromRaw(api.authorize(LoginRequest(email, password)))
+    }
+
+    suspend fun register(email: String, password: String) = Either.of {
+        api.register(RegistrationRequest(email, password))
     }
 }

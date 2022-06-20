@@ -7,4 +7,13 @@
     <string name="button_login_text">Войти</string>
     <string name="no_acc_text">Нет аккаунта?</string>
     <string name="registration_text">ЗАРЕГИСТРИРОВАТЬСЯ</string>
+    <string name="registration_title">Регистрация</string>
+    <string name="next_button">Далее</string>
+    <string name="acc_text">Есть аккаунт?</string>
+    <string name="login_text">ВОЙТИ</string>
+    <string name="registration_button_text">Зарегистрироваться</string>
+    <string name="main_page_title">Главная</string>
+    <string name="fiends_page_title">Друзья</string>
+    <string name="history_page_title">История</string>
+    <string name="settings_page_title">Настройки</string>
 </resources>

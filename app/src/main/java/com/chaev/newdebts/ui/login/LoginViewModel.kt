@@ -38,6 +38,6 @@ class LoginViewModel(
     }
 
     fun navigateRegistration() {
-        router.navigateTo(Screens.Registrsation())
+        router.navigateTo(Screens.Registrsation1())
     }
 }
