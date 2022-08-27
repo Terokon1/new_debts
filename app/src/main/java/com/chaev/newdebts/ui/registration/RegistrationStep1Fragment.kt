@@ -7,9 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isNotEmpty
 import com.chaev.newdebts.databinding.FragmentRegistrationStep1Binding
+import com.chaev.newdebts.ui.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class RegistrationStep1Fragment : Fragment() {
+class RegistrationStep1Fragment : BaseFragment() {
 
     private lateinit var binding: FragmentRegistrationStep1Binding
     private val viewModel: RegistrationViewModel by sharedViewModel()

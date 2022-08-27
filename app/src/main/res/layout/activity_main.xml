@@ -15,6 +15,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navi"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="wrap_content"
         android:background="@color/background"
         android:paddingTop="3dp"
@@ -26,6 +27,7 @@
 
     <View
         android:id="@+id/line"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#1C9C6E"

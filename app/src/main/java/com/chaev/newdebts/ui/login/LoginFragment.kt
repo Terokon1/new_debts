@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.viewModelScope
 import com.chaev.newdebts.databinding.FragmentLoginBinding
+import com.chaev.newdebts.ui.base.BaseFragment
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.scope.fragmentScope
@@ -14,7 +15,7 @@ import org.koin.androidx.scope.lifecycleScope
 import org.koin.androidx.scope.scope
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LoginFragment : Fragment() {
+class LoginFragment : BaseFragment() {
 
     private lateinit var binding: FragmentLoginBinding
     private val viewModel: LoginViewModel by viewModel()
@@ -31,23 +32,7 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonLogin.setOnClickListener {
-            val email = binding.emailField.editText?.text.toString()
-            val password = binding.passwordField.editText?.text.toString()
-            if (email.isEmpty()) {
-                binding.emailField.isErrorEnabled = true
-                binding.emailField.error = "Поле ввода пустое"
-            } else {
-                binding.emailField.isErrorEnabled = false
-            }
-            if (password.isEmpty()) {
-                binding.passwordField.isErrorEnabled = true
-                binding.passwordField.error = "Поле ввода пустое"
-            } else {
-                binding.passwordField.isErrorEnabled = false
-            }
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                viewModel.onLoginClicked(email, password)
-            }
+            loginClicked()
         }
 
         binding.registration.setOnClickListener {
@@ -74,5 +59,25 @@ class LoginFragment : Fragment() {
     private fun hideError() {
         binding.emailField.isErrorEnabled = false
         binding.passwordField.isErrorEnabled = false
+    }
+
+    private fun loginClicked() {
+        val email = binding.emailField.editText?.text.toString()
+        val password = binding.passwordField.editText?.text.toString()
+        if (email.isEmpty()) {
+            binding.emailField.isErrorEnabled = true
+            binding.emailField.error = "Поле ввода пустое"
+        } else {
+            binding.emailField.isErrorEnabled = false
+        }
+        if (password.isEmpty()) {
+            binding.passwordField.isErrorEnabled = true
+            binding.passwordField.error = "Поле ввода пустое"
+        } else {
+            binding.passwordField.isErrorEnabled = false
+        }
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            viewModel.onLoginClicked(email, password)
+        }
     }
 }

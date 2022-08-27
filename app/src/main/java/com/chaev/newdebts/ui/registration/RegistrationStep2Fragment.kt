@@ -9,12 +9,13 @@ import android.widget.Toast
 import androidx.core.view.isNotEmpty
 import androidx.lifecycle.viewModelScope
 import com.chaev.newdebts.databinding.FragmentRegistrationStep2Binding
+import com.chaev.newdebts.ui.base.BaseFragment
 import com.chaev.newdebts.utils.Status
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class RegistrationStep2Fragment : Fragment() {
+class RegistrationStep2Fragment : BaseFragment() {
 
     private lateinit var binding: FragmentRegistrationStep2Binding
     private val viewModel: RegistrationViewModel by sharedViewModel()
@@ -34,7 +35,7 @@ class RegistrationStep2Fragment : Fragment() {
                 viewModel.navigateBack()
             }
             buttonRegister.setOnClickListener {
-                if (passwordField.editText!!.text.isNotEmpty()) {
+                if (!passwordField.editText?.text.isNullOrEmpty()) {
                     viewModel.password = passwordField.editText?.text.toString()
                     viewModel.registerButtonClicked()
                 } else {
