@@ -17,6 +17,7 @@ object RetrofitBuilder {
             .client(
                 OkHttpClient()
                     .newBuilder()
+                    .authenticator(TokenAuthenticator())
                     .addInterceptor(
                         HttpLoggingInterceptor()
                             .apply {

@@ -18,8 +18,7 @@ class CreditsViewModel(private val debtsApiRepository: DebtsApiRepository) : Vie
         getCredits()
     }
 
-
-    fun getCredits() {
+    private fun getCredits() {
         viewModelScope.launch {
             when (val r = debtsApiRepository.getCredits()) {
                 is Right -> {

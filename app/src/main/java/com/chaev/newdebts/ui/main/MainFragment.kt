@@ -4,14 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.viewModelScope
+import com.chaev.newdebts.R
 import com.chaev.newdebts.databinding.FragmentMainBinding
 import com.chaev.newdebts.ui.base.BaseFragment
 import com.chaev.newdebts.ui.base.IBottomNavigable
+import com.chaev.newdebts.utils.Resources
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainFragment : BaseFragment(), IBottomNavigable {
     private lateinit var binding: FragmentMainBinding
+    private val mainViewModel: MainViewModel by viewModel()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,5 +36,12 @@ class MainFragment : BaseFragment(), IBottomNavigable {
                 1 -> tab.text = "Вам должны"
             }
         }.attach()
+        mainViewModel.viewModelScope.launch {
+            mainViewModel.sums.collect {
+                binding.debtSum.text = "${it.myDebtSum} ₽"
+                binding.creditSum.text = "${it.myCreditSum} ₽"
+            }
+        }
+        binding.titleText.text = getString(R.string.hello_text, Resources.User.info.username)
     }
 }

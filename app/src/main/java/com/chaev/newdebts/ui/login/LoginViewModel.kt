@@ -5,12 +5,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chaev.newdebts.Screens
 import com.chaev.newdebts.domain.repositories.DebtsApiRepository
-import com.chaev.newdebts.utils.AppConsts
+import com.chaev.newdebts.utils.Resources
 import com.chaev.newdebts.utils.Left
 import com.chaev.newdebts.utils.Right
 import com.github.terrakok.cicerone.Router
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -48,7 +46,7 @@ class LoginViewModel(
         when (val r = debtsApiRepository.getMyInfo()) {
             is Right -> {
                 Log.d("123", "${r.value}")
-                AppConsts.User.info = r.value
+                Resources.User.info = r.value
             }
             is Left -> {}
         }

@@ -1,6 +1,7 @@
 package com.chaev.newdebts.ui.main.debts
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class DebtsFragment : Fragment() {
         binding.debtsList.layoutManager = LinearLayoutManager(requireContext())
         debtsViewModel.viewModelScope.launch {
             debtsViewModel.debts.collect {
+                Log.d("zxc", "collect")
                 adapter.items = it
                 adapter.notifyDataSetChanged()
             }

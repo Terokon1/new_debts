@@ -7,14 +7,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_FADE
 import com.chaev.newdebts.R
-import com.chaev.newdebts.Screens
 import com.chaev.newdebts.cicerone.CiceroneHolder
+import com.chaev.newdebts.databinding.ActivityMainBinding
 import com.chaev.newdebts.ui.base.IBottomNavigable
 import com.chaev.newdebts.ui.base.IFragmentHolder
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import com.github.terrakok.cicerone.androidx.FragmentScreen
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), IFragmentHolder {
     private val cicerone: CiceroneHolder by inject()
@@ -39,17 +40,22 @@ class MainActivity : AppCompatActivity(), IFragmentHolder {
                 fragmentTransaction.setTransition(TRANSIT_FRAGMENT_FADE)
             }
         }
+    private val mainViewModel: MainActivityViewModel by viewModel()
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         supportFragmentManager.addOnBackStackChangedListener {
             supportFragmentManager.findFragmentById(R.id.fragment_container)?.let {
                 onFragmentChanged(it)
             }
         }
+
         if (savedInstanceState == null) {
-            cicerone.router.replaceScreen(Screens.Login())
+            mainViewModel.checkAuthorization()
+//            cicerone.router.replaceScreen(Screens.Login())
         }
     }
 
@@ -60,6 +66,8 @@ class MainActivity : AppCompatActivity(), IFragmentHolder {
 
     override fun onPause() {
         super.onPause()
+        mainViewModel.saveToken()
+        mainViewModel.saveUsername()
         navigatorHolder.removeNavigator()
     }
 
@@ -73,4 +81,5 @@ class MainActivity : AppCompatActivity(), IFragmentHolder {
     override fun onAttach(fragment: Fragment) {
         onFragmentChanged(fragment)
     }
+
 }

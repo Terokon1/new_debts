@@ -1,5 +1,6 @@
 package com.chaev.newdebts.ui.main.debts
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chaev.newdebts.domain.models.Debts
@@ -19,10 +20,11 @@ class DebtsViewModel(private val debtsApiRepository: DebtsApiRepository) : ViewM
     }
 
 
-    fun getDebts() {
+    private fun getDebts() {
         viewModelScope.launch {
             when (val r = debtsApiRepository.getDebts()) {
                 is Right -> {
+                    Log.d("zxc", "${r.value}")
                     _debts.emit(r.value)
                 }
                 is Left -> {}
